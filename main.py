@@ -23,12 +23,12 @@ class CraftedList:
         return cnt
 
     def append(self, el):
-       self.__current_length += 1
-       self.__elements = [item for item in self.__elements] + [None]
-       self.__elements[self.__current_length - 1] = el
+        self.__current_length += 1
+        self.__elements = [item for item in self.__elements] + [None]
+        self.__elements[self.__current_length - 1] = el
 
     def clear(self):
-        self.__elements = list()
+        self.__elements = []
         self.__current_length = self.length()
 
     def copy(self):
@@ -82,13 +82,14 @@ class CraftedList:
     def reverse(self):
         self.__elements =  self.__elements[::-1]
 
-    def sort(self):
-        pass
+    def sort(self, key = None, reverse = False):
+        self.__elements =  sorted(self.__elements, key=key, reverse=reverse)
+
 
 def main():
-    ml = CraftedList(1, 2, 3, 4, 5, 6)
+    ml = CraftedList("aaa", "bbbb", "aaaaa", "bb", "b", "aaaaaa")
     print(ml)
-    ml.reverse()
+    ml.sort(key=len, reverse=True)
     print(ml)
 
 
